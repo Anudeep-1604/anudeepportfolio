@@ -336,6 +336,16 @@ body.loaded #main-website {
   section {
     padding: 40px 20px;
   }
+  #nav-links {
+  display: none;
+}
+
+#nav-links.active {
+  display: block;
+}
+
+/* Add responsive styling here */
+
 
   header {
     padding: 100px 20px 60px;
@@ -411,6 +421,71 @@ html, body {
     height: auto;
   }
 }
+img {
+  max-width: 100%;
+  height: auto;
+}
+#intro-video-container video,
+#bg-video {
+  max-width: 100%;
+  height: auto;
+  width: 100vw;
+  height: 100vh;
+}
+@media (max-width: 768px) {
+  header h1 {
+    font-size: 2.2rem;
+  }
+  header p {
+    font-size: 1rem;
+  }
+  .btn {
+    padding: 10px 20px;
+    font-size: 1rem;
+  }
+  .portfolio-card img {
+    height: 160px;
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    font-size: 14px;
+  }
+  h1 {
+    font-size: 1.8rem;
+  }
+  h2 {
+    font-size: 1.5rem;
+  }
+  p {
+    font-size: 0.9rem;
+  }
+  nav ul li a {
+    font-size: 1.1rem;
+  }
+}
+.about-images {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-top: 50px;
+}
+
+.skills-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  max-width: 800px;
+  margin: 0 auto;
+}@media (max-width: 480px) {
+  section {
+    padding: 30px 15px;
+  }
+}
+
 
 
         
@@ -561,35 +636,48 @@ html, body {
     }, 6000);
 </script>
 
+<!-- Navigation -->
+<nav>
+  <div class="container">
+    <button
+      class="menu-toggle"
+      aria-label="Toggle menu"
+      aria-expanded="false"
+      onclick="toggleMenu(this)"
+    >
+      ☰
+    </button>
 
-    <!-- Navigation -->
-    <nav>
-        <div class="container">
-            <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+    <a href="#" class="logo">KONAGALA ANUDEEP</a>
 
-            <a href="#" class="logo">KONAGALA ANUDEEP</a>
-            <ul>
-                <li><a href="#about">About</a></li>
-                <li><a href="#portfolio">Portfolio</a></li>
-                <li><a href="#skills">Skills</a></li>
-                <li><a href="#gallery">Gallery</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </div>
-        <script>
-  function toggleMenu() {
-    document.getElementById("nav-links").classList.toggle("active");
-  }
-</script>
+    <ul id="nav-links">
+      <li><a href="#about" tabindex="0">About</a></li>
+      <li><a href="#portfolio" tabindex="0">Portfolio</a></li>
+      <li><a href="#skills" tabindex="0">Skills</a></li>
+      <li><a href="#gallery" tabindex="0">Experience</a></li>
+      <li><a href="#contact" tabindex="0">Contact</a></li>
+    </ul>
+  </div>
 
-    </nav>
+  <script>
+    function toggleMenu(button) {
+      const navLinks = document.getElementById("nav-links");
+      navLinks.classList.toggle("active");
+
+      // Toggle aria-expanded on button for accessibility
+      const expanded = button.getAttribute("aria-expanded") === "true";
+      button.setAttribute("aria-expanded", !expanded);
+    }
+  </script>
+</nav>
+
     
     <!-- Header -->
     <header>
         
     <!-- 🔁 Background Video -->
     <video autoplay muted loop playsinline id="bg-video">
-        <source src="bg30.mp4" type="video/mp4">
+        <source src="bg30.mp4" type="video/mp4" loading="lazy">
         Your browser does not support the video tag.
     </video>
 
@@ -600,7 +688,7 @@ html, body {
             <h1>Anudeep Konagala</h1>
             <p>CONTENT CREATION  & VIDEO EDITOR | AI INTEGRATION WORKFLOW  SHORT FORM CONTENT | ACCOUNT MANAGEMENT</p>
             </p>
-            <img src="1144.jpg" alt="Anudeep Konagala" class="profile-image">
+            <img src="1144.jpg" alt="Anudeep Konagala" class="profile-image" loading="lazy">
         </div>
     </header>
     
@@ -611,9 +699,9 @@ html, body {
             <div class="about-content">
                 <p>A dynamic and creative professional with a B.Tech degree from Malla Reddy University, known for generating innovative content and managing successful YouTube channels with over 10 million views. Passionate about harnessing creativity, AI integration, and social media expertise to drive impactful digital growth.</p>
                 <div class="about-images">
-                    <img src="image1.jpg.jpg" alt="Anudeep working">
-                    <img src="image2.jpg.jpg" alt="Anudeep creating content">
-                    <img src="image3.jpg.jpg" alt="Anudeep at event">
+                    <img src="image1.jpg.jpg" alt="Anudeep working" loading="lazy">
+                    <img src="image2.jpg.jpg" alt="Anudeep creating content" loading="lazy">
+                    <img src="image3.jpg.jpg" alt="Anudeep at event" loading="lazy">
                 </div>
             </div>
         </div>
@@ -627,7 +715,7 @@ html, body {
                 
                 <!-- Card 2 -->
                 <div class="portfolio-card">
-                    <img src="dt logo.jpg" alt="Instagram – dirty_talkzzzz">
+                    <img src="dt logo.jpg" alt="Instagram – dirty_talkzzzz" loading="lazy">
                     <h3>Instagram – dirty_talkzzzz</h3>
                     <p>1 crore+ impressions. 3k+ followers. AI-powered reels & edits.</p>
                     <a href="https://www.instagram.com/dirty_talkzzzz" class="btn" target="_blank">View Profile</a>
@@ -635,7 +723,7 @@ html, body {
                 
                 <!-- Card 3 -->
                 <div class="portfolio-card">
-                    <img src="drive.jpeg" alt="My Works – Google Drive Portfolio">
+                    <img src="drive.jpeg" alt="My Works – Google Drive Portfolio" loading="lazy">
                     <h3>Google Drive links </h3>
                     <p>Access my full creative collection: videos, edits, scripts & more.</p>
                     <a href="https://drive.google.com/drive/folders/1fDl1CDk3lIslBGdY2J6UCXCROyadm0M7?usp=sharing" class="btn" target="_blank">Open Folder</a>
@@ -643,7 +731,7 @@ html, body {
                 
                 <!-- Card 4 -->
                 <div class="portfolio-card">
-                    <img src="7.jpg" alt="Shared YouTube Shorts – Foar7">
+                    <img src="7.jpg" alt="Shared YouTube Shorts – Foar7" loading="lazy">
                     <h3>Shared YouTube Shorts – Foar7</h3>
                     <p>Collaborative short-form videos featuring viral and creative content.</p>
                     <a href="https://www.youtube.com/@foar7/shorts" class="btn" target="_blank">Watch Shorts</a>
@@ -651,7 +739,7 @@ html, body {
                 
                 <!-- Card 5 -->
                 <div class="portfolio-card">
-                    <img src="6.jpg" alt="YouTube Channel – STROKE YT">
+                    <img src="6.jpg" alt="YouTube Channel – STROKE YT" loading="lazy">
                     <h3>YouTube Channel – STROKE YT</h3>
                     <p>2.6K subs. Gaming related edits and videos.</p>
                     <a href="#" class="btn">Watch Now</a>
@@ -660,18 +748,19 @@ html, body {
 
                 <!-- Card 5 -->
                 <div class="portfolio-card">
-                    <img src="9.jpg" alt="YouTube Channel – STROKE YT">
-                    <h3><karu class="edition"></karu> EDITING TUTORIALS  </h3>
+                    <img src="9.jpg" alt="YouTube Channel – STROKE YT" loading="lazy" >
+                    <h3><span class="edition"></span> EDITING TUTORIALS</h3>
                     <p>1M+ reach </p>
                     <a href="https://www.instagram.com/karuuu.edition?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" class="btn">Watch Now</a>
                 </div>
                 <div class="portfolio-card">
-                    <img src="LOGO1.png" alt="YouTube Channel – STROKE YT">
+                    <img src="LOGO1.png" alt="YouTube Channel – STROKE YT" loading="lazy">
                     <h3><karu class="edition"></karu> SPONSER EDITS  </h3>
                     <p> internship works </p>
                     <a href="https://drive.google.com/drive/folders/1Ol8u-UHA1ZB9AxJCv17zVt2WBrHPszz-" class="btn">Watch Now</a>
                 </div>
             </div>
+        </section>
                <!-- Card 5 -->
                
   <!-- Portfolio Section -->
@@ -683,7 +772,7 @@ html, body {
 
             <!-- Card 1: Grepin Community -->
             <div class="portfolio-card">
-                <img src="LOGO1.png" alt="Instagram – grepincommunity">
+                <img src="LOGO1.png" alt="Instagram – grepincommunity loading="lazy">
                 <h3>Instagram – grepincommunity</h3>
                 <p>Internship Role: Content Creation & Social Media Management</p>
                 <a href="https://www.instagram.com/grepincommunity?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" class="btn" target="_blank">View Profile</a>
@@ -691,7 +780,7 @@ html, body {
 
             <!-- Card 2: Dirty Talkzzz -->
             <div class="portfolio-card">
-                <img src="dt logo.jpg" alt="Instagram – dirty_talkzzzz">
+                <img src="dt logo.jpg" alt="Instagram – dirty_talkzzzz" loading="lazy">
                 <h3>FOUNDER | ADMIN | MANAGER</h3>
                 <p>Past 1 Year</p>
                 <a href="https://www.instagram.com/dirty_talkzzzz?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" class="btn" target="_blank">Watch Now</a>
@@ -699,7 +788,7 @@ html, body {
 
             <!-- Card 3: Performance Reel -->
             <div class="portfolio-card">
-                <img src="s1.jpg" alt="My Performance Reel">
+                <img src="s1.jpg" alt="My Performance Reel" loading="lazy">
                 <h3> MY PERFORMANCE </h3>
                 
                 <a href="https://www.instagram.com/dirty_talkzzzz/reel/DIQL1ROSMK9/" class="btn" target="_blank">Watch Now</a>
