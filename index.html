@@ -8,7 +8,7 @@
         
         @font-face {
             font-family: 'Burokku';
-            src: url('C:\Users\ANUDEEP\Desktop\Anudeep_Portfolio\font\burokku') format('opentype');
+            src: url('BUROKKU_TRIAL.otf') format('opentype');
             font-weight: normal;
             font-style: normal;
         }
@@ -187,8 +187,9 @@ body.loaded #main-website {
         }
         
         .profile-image {
-            width: 180px;
-            height: 180px;
+            width: 40vw;
+            height: auto;
+            max-width: 180px;
             border-radius: 50%;
             object-fit: cover;
             border: 5px solid #fff;
@@ -235,6 +236,36 @@ body.loaded #main-website {
         nav ul li a:hover {
             opacity: 0.7;
         }
+        .menu-toggle {
+  display: none;
+  font-size: 2rem;
+  background: none;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  nav ul {
+    display: none;
+    flex-direction: column;
+    background-color: #111;
+    position: absolute;
+    top: 60px;
+    right: 20px;
+    padding: 20px;
+    border-radius: 10px;
+  }
+
+  nav ul.active {
+    display: flex;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+}
+
         
         /* About Section */
         .about {
@@ -301,6 +332,87 @@ body.loaded #main-website {
             margin-bottom: 15px;
             font-size: 1.5rem;
         }
+        @media (max-width: 768px) {
+  section {
+    padding: 40px 20px;
+  }
+
+  header {
+    padding: 100px 20px 60px;
+  }
+
+  header h1 {
+    font-size: 2rem;
+  }
+
+  .btn {
+    padding: 10px 20px;
+    font-size: 1rem;
+  }
+
+  .portfolio-card img {
+    height: 160px;
+  }
+
+  .gallery-grid {
+    grid-template-columns: 1fr;
+  }
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+@media (max-width: 480px) {
+  body {
+    font-size: 14px;
+  }
+
+  h1 {
+    font-size: 1.8rem;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+  }
+}
+html, body {
+  height: 100%;
+  overflow-x: hidden;
+}
+@media screen and (max-width: 480px) {
+  h1 {
+    font-size: 2rem;
+  }
+
+  p {
+    font-size: 0.9rem;
+  }
+
+  nav ul li a {
+    font-size: 1.2rem;
+  }
+
+  .nav-toggle {
+    width: 40px;
+    height: 35px;
+  }
+
+  .nav-toggle span {
+    height: 5px;
+    margin: 6px 0;
+  }
+
+  .container {
+    width: 95%;
+  }
+
+  .portfolio img, .about-section img, video {
+    max-width: 100%;
+    height: auto;
+  }
+}
+
+
         
         /* Skills Section */
         .skills {
@@ -453,6 +565,8 @@ body.loaded #main-website {
     <!-- Navigation -->
     <nav>
         <div class="container">
+            <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+
             <a href="#" class="logo">KONAGALA ANUDEEP</a>
             <ul>
                 <li><a href="#about">About</a></li>
@@ -462,11 +576,17 @@ body.loaded #main-website {
                 <li><a href="#contact">Contact</a></li>
             </ul>
         </div>
+        <script>
+  function toggleMenu() {
+    document.getElementById("nav-links").classList.toggle("active");
+  }
+</script>
+
     </nav>
     
     <!-- Header -->
     <header>
-        <header>
+        
     <!-- 🔁 Background Video -->
     <video autoplay muted loop playsinline id="bg-video">
         <source src="bg30.mp4" type="video/mp4">
